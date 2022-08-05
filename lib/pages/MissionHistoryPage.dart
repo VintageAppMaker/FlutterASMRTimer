@@ -76,7 +76,7 @@ class _MissionHistoryPageState extends State<MissionHistoryPage> {
     var lst      = await getAlarmItems();
     var children = <TimelineItem>[];
     for (var i = 0; i < lst.length; i++ ){
-      String title    = lst[i].desc;
+      String title    = "⌈ ${lst[i].desc} ⌋";
       String subtitle = "start: ${lst[i].startTime} \nend: ${lst[i].endTime}";
       
       children.add(
@@ -84,7 +84,7 @@ class _MissionHistoryPageState extends State<MissionHistoryPage> {
           child: ListTile(key: UniqueKey(), 
           title: Text(title, style: TextStyle(fontSize: 20, color: Colors.white),), 
           subtitle: Text(subtitle, style: TextStyle(color: Colors.white),),),
-          indicator: (i % 2 ==0) ? Icon(Icons.alarm_on) : Icon(Icons.alarm_off),
+          indicator: (i % 2 ==0) ? Icon(Icons.alarm_on, color: Colors.white) : Icon(Icons.alarm_off, color: Colors.white54),
         )
       );
     }

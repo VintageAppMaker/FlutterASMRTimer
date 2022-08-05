@@ -107,6 +107,9 @@ class Timeline extends StatelessWidget {
   }
 }
 
+
+// 추가: indicator를 따로 배열로 만드는 것이 비효율적이라 
+// Item 위젯으로 관리함
 class TimelineItem extends StatelessWidget{
   Widget child;
   Widget indicator;
