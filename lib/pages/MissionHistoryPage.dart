@@ -58,9 +58,8 @@ class _MissionHistoryPageState extends State<MissionHistoryPage> {
               builder: ((context, snapshot) {
                 if(snapshot.hasData){
                   return Timeline(
-                    children:  [ for (var i in snapshot.data as List<Widget>) i  ],
-                    indicators: <Widget>[ Icon(Icons.access_alarm)]);
-                  
+                    children:  [ for (var i in snapshot.data as List<TimelineItem>) i  ]);
+                    
                 } else {
                   return const CircularProgressIndicator();
                 }
@@ -73,17 +72,20 @@ class _MissionHistoryPageState extends State<MissionHistoryPage> {
   }
 
   // future builder의 UI로 전송  
-  Future<List<Widget>> _buildAlramItems() async{
+  Future<List<TimelineItem>> _buildAlramItems() async{
     var lst      = await getAlarmItems();
-    var children = <Widget>[];
+    var children = <TimelineItem>[];
     for (var i = 0; i < lst.length; i++ ){
       String title    = lst[i].desc;
       String subtitle = "start: ${lst[i].startTime} \nend: ${lst[i].endTime}";
       
       children.add(
-        ListTile(key: UniqueKey(), 
-        title: Text(title, style: TextStyle(fontSize: 20, color: Colors.white),), 
-        subtitle: Text(subtitle, style: TextStyle(color: Colors.white),),)
+        TimelineItem(
+          child: ListTile(key: UniqueKey(), 
+          title: Text(title, style: TextStyle(fontSize: 20, color: Colors.white),), 
+          subtitle: Text(subtitle, style: TextStyle(color: Colors.white),),),
+          indicator: (i % 2 ==0) ? Icon(Icons.alarm_on) : Icon(Icons.alarm_off),
+        )
       );
     }
 

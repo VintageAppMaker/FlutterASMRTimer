@@ -5,7 +5,6 @@ class Timeline extends StatelessWidget {
   const Timeline({
     Key? key,
     required this.children,
-    this.indicators,
     this.isLeftAligned = true,
     this.itemGap = 12.0,
     this.gutterSpacing = 4.0,
@@ -29,10 +28,9 @@ class Timeline extends StatelessWidget {
         //assert(indicators == null || children.length == indicators.length),
         super(key: key);
 
-  final List<Widget> children;
+  final List<TimelineItem> children;
   final double itemGap;
   final double gutterSpacing;
-  final List<Widget>? indicators;
   final bool isLeftAligned;
   final EdgeInsets padding;
   final ScrollController? controller;
@@ -64,13 +62,10 @@ class Timeline extends StatelessWidget {
       primary: primary,
       itemBuilder: (context, index) {
         final child = children[index];
-        final _indicators = indicators;
-
+        
         Widget? indicator;
-        if (_indicators != null) {
-          indicator = _indicators[0];
-        }
-
+        indicator = child.indicator;
+        
         final isFirst = index == 0;
         final isLast = index == itemCount - 1;
 
@@ -109,6 +104,17 @@ class Timeline extends StatelessWidget {
         );
       },
     );
+  }
+}
+
+class TimelineItem extends StatelessWidget{
+  Widget child;
+  Widget indicator;
+  TimelineItem({required this.child, required this.indicator});
+  
+  @override
+  Widget build(BuildContext context) {
+    return child;
   }
 }
 
