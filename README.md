@@ -1,7 +1,7 @@
 # 플러터 명상타이머
 > Flutter로 만드는 명상타이머 prototype
 
-Android에 특화된 소스. Android의경우, Service를 foreground로 실행하지 않으면 핸드폰에서 종료시킴. 그래서 Timer의 기능을 flutter_foreground_task를 사용하여 구현함. 
+Android에 특화된 소스. Android의경우, Service를 foreground로 실행하지 않으면 핸드폰에서 배터리 절약을 위해 어느순간 종료시킴. 그래서 Timer의 기능을 flutter_foreground_task를 사용하여 구현함. 
 
 ##### 사용된 플러그인
 
