@@ -16,6 +16,11 @@ Android에 특화된 소스. Android의경우, Service를 foreground로 실행�
 
 ~~~
 
+hive를 직렬화로 사용할 경우, 터미널에서 다음과 같은 명령어를 수행해주어야 한다. 
+~~~
+flutter packages pub run build_runner build
+~~~
+
 pub.dev 사이트링크(설치 및 도움말)
 
 - [wakelock](https://pub.dev/packages/wakelock)
